@@ -1,10 +1,14 @@
 from flask import Flask, request, jsonify
 
+from flask_cors import CORS
+
 from resume_parser import extract_text_from_pdf
 
 from job_matcher import calculate_match
 
 app = Flask(__name__)
+
+CORS(app)
 
 
 @app.route("/analyze", methods=["POST"])
@@ -31,6 +35,6 @@ def analyze_resume():
 if __name__ == "__main__":
 
     app.run(
-    host="0.0.0.0",
-    port=5000
-)
+        host="0.0.0.0",
+        port=5000
+    )
